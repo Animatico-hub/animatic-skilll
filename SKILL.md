@@ -1,6 +1,6 @@
 ---
 name: animatic-skill
-description: AnimaticSkill — motor próprio em Three.js + Remotion para vídeos verticais 3D cartoon 100% POV (1080x1920, 30 fps, PT-BR) de suspense, humor e terror psicológico. Tem modo guiado — a pessoa diz um tema ("escola", "casa", "quero uma série de terror") e a skill sugere 3 premissas baseadas nas séries que viralizaram e produz o episódio. Personagens 3D com contorno escuro, cel shading, olhos grandes móveis, sobrancelhas, boca com visemas; câmera em primeira pessoa com mãos; cenários simples com microinformações (placas, avisos, relógio, crachás) e validação geométrica automática de posicionamento. Use SEMPRE que o usuário mencionar AnimaticSkill, "nosso motor POV", "a base aprovada", "a demo da copa/da Lia", pedir um novo episódio/cena/cenário/personagem nesse estilo, mandar falas do ElevenLabs para animar, ou pedir para corrigir objetos flutuando/atravessando no cenário — mesmo sem dizer "skill". Não use para o estilo "Teco Azarado" com fisheye extremo (pov-story-shorts) nem para personagens 2D planos em mundo 3D (cartoon-3d-short).
+description: AnimaticSkill — motor próprio em Three.js + Remotion para vídeos verticais 3D cartoon 100% POV (1080x1920, 30 fps, PT-BR) de suspense, humor e terror psicológico. Tem modo guiado — a pessoa diz um tema ("escola", "casa", "quero uma série de terror") e a skill sugere 3 premissas baseadas nas séries que viralizaram e produz o episódio. Personagens 3D com contorno escuro, cel shading, olhos grandes móveis, sobrancelhas, boca com visemas; câmera em primeira pessoa com mãos; cenários simples com microinformações (placas, avisos, relógio, crachás) e validação geométrica automática de posicionamento. Use SEMPRE que o usuário mencionar AnimaticSkill, "nosso motor POV", "a base aprovada", "a demo da copa/da Lia", pedir um novo episódio/cena/cenário/personagem nesse estilo, mandar falas do ElevenLabs (ou de outra IA de voz, ou gravadas) para animar, ou pedir para corrigir objetos flutuando/atravessando no cenário — mesmo sem dizer "skill". Não use para o estilo "Teco Azarado" com fisheye extremo (pov-story-shorts) nem para personagens 2D planos em mundo 3D (cartoon-3d-short).
 ---
 
 # AnimaticSkill — vídeos 3D cartoon POV (Three.js + Remotion)
@@ -13,17 +13,21 @@ pode vender a skill**, original ou editada.
 ## Modo guiado (quem está começando, ou pedido vago)
 Quem usa a skill pode não saber programar nem animar. Se o pedido for vago ("quero criar uma série", "me dá ideias",
 "faz um vídeo de terror", "tema: escola") ou for o primeiro uso, conduza tudo, em linguagem simples, sem jargão:
-1. **Preparar o ambiente sozinho** (sem perguntar, só avisar): Node 18+, FFmpeg, Python com `faster-whisper`, conector do
-   ElevenLabs. Instale/oriente o que faltar. Crie o projeto copiando `template/` para um caminho curto (`C:\anim\<serie>`)
+1. **Preparar o ambiente sozinho** (sem perguntar, só avisar): Node 18+, FFmpeg, Python com `faster-whisper`.
+   Instale/oriente o que faltar. Crie o projeto copiando `template/` para um caminho curto (`C:\anim\<serie>`)
    e rode `npm install` e `npm run check`.
-2. **Uma pergunta só**: o tema ou lugar (ex.: escola, casa, trabalho, hospital) e, se quiser, o público (mais infantil ou
-   mais adulto). Use AskUserQuestion com 3–4 opções de lugar tiradas de `references/temas.md` + "outro".
+2. **Uma tela de perguntas só** (um AskUserQuestion com duas perguntas):
+   - o tema ou lugar (ex.: escola, casa, trabalho, hospital) e, se quiser, o público (mais infantil ou mais adulto), com
+     3–4 opções de lugar tiradas de `references/temas.md` + "outro";
+   - **de onde vêm as vozes** (nunca presuma ElevenLabs): "ElevenLabs (conectado ao Claude, eu gero)", "Outra IA de voz
+     (você gera e me manda os arquivos)", "Minha própria voz (você grava)". Pule esta pergunta se o projeto já tiver
+     `voz.json`; grave a resposta lá (`{"fonte": "elevenlabs" | "outra" | "propria", "nome": "<IA>"}`).
+   Detalhes de cada fonte: `references/audio.md` › "Fonte das vozes".
 3. **Sugerir 3 premissas** originais para o tema, seguindo `references/temas.md` (fórmula dos episódios que
    viralizaram). Prefira lugares com cenário pronto. O usuário escolhe ou mistura.
-4. **Criar**: roteiro com verdade oculta e escolha final → **prévias** (quadros parados) para aprovar → vozes
-   (escolha vozes PT-BR com `creative_list_voices`; os IDs das bíblias são sugestões e podem não estar na conta dele) →
-   produção → QA → gancho se o começo estiver fraco → entrega (vídeo, caption, próxima parte com os dois caminhos).
-5. Antes de gastar créditos do ElevenLabs, mostre o custo estimado e peça o ok.
+4. **Criar**: roteiro com verdade oculta e escolha final → **prévias** (quadros parados) para aprovar → vozes pela fonte
+   escolhida → produção → QA → gancho se o começo estiver fraco → entrega (vídeo, caption, próxima parte com os dois caminhos).
+5. Se for você quem gera as vozes (ElevenLabs ou outra IA conectada), mostre o custo estimado e peça o ok antes.
 Siga sempre `references/regras-do-usuario.md` (as regras de qualidade valem para todos).
 
 Prioridade absoluta: **storytelling**. A animação é simples, funcional e nunca atrapalha o enredo.
@@ -109,13 +113,15 @@ O olhar divide o giro: tronco ~30% (máx. 0,4 rad), cabeça até 0,95 rad, olhos
    `SeriesLayer` (HUD + selo + preto + cartela), e os entregáveis `capa.png` (parte 2+), `caption.txt` e `next.md`
    com os dois caminhos (modelos em `template/serie/`).
 1. **Roteiro primeiro.** Leia `references/roteiro.md`. Defina a verdade oculta antes dos diálogos.
-2. **Áudio.** Leia `references/audio.md`. Vozes vêm do ElevenLabs. Meça a duração real (`ffprobe`), mapeie personagem → fala, use timestamps por palavra quando houver
+2. **Áudio.** Leia `references/audio.md`. Vozes vêm da fonte que o usuário escolheu (`voz.json`: ElevenLabs, outra IA ou a
+   própria voz). Meça a duração real (`ffprobe`), mapeie personagem → fala, use timestamps por palavra quando houver
    (preencha `words[].start/end` e `syl`); sem timestamps, `parseLine` estima sílabas dentro de `start/end`. Não acelere, não mude pitch,
    não invente falas nem vozes. Efeito de voz: `npm run voz -- <porta|radio|distante|sussurro|interna|altofalante|submerso|normal> in out`.
    Mixagem: `<SoundMix lines sfx loops bed heart drops endAt/>` (`src/audio/SoundMix.jsx`): **fundo contínuo** (drone, não música)
    que baixa ~8 dB nas falas — nunca deixar buraco de som; respiro de ~0,5 s (`drops`) antes de revelação; grave na cartela (`endAt`).
    Depois do render: `npm run master -- out/ep.mp4 out/ep_final.mp4 [--abafar a-b]` (abafado 600 Hz, −14 LUFS, lista buracos).
-   Sons prontos em `public/sfx` (lista em `references/audio.md`); som novo realista → ElevenLabs (conector), conferindo antes.
+   Sons prontos em `public/sfx` (lista em `references/audio.md`); som novo realista → som livre (Freesound CC0 /
+   Wikimedia Commons) ou, se o ElevenLabs estiver conectado, gerar lá, conferindo antes.
 3. **Ambiente.** Só o que o roteiro exige; um ambiente pode sustentar o episódio. Leia `references/cenarios.md`.
    Copie `breakRoom.js` como modelo: paredes/piso/teto, móveis, `pois` (pontos de interesse para câmera e olhares).
 4. **Direção.** Em `scene.js`, cada ação nasce do roteiro (ver "Regras de direção"). Use `wordStart(linha, 'palavra')` para

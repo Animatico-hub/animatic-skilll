@@ -55,12 +55,23 @@
 - Tensão na ameaça, "bem de leve": `tensao_hit` no impacto, `coracao_rapido` em loop (keys 0,16 → 0,27 até a cartela),
   `tensao_drone` vol ~0,55; o coração normal quase some antes da ameaça para a mudança ser sentida.
 
-Som realista novo (passos, porta, sirene...) que não existe livre: gerar no ElevenLabs (`creative_generate_in_flow`,
-`eleven_text_to_sound_v2`, prompt em inglês, "dry recording"). Ele gera clipes curtos (0,5–2 s) e ignora "8 seconds":
-para ambiente longo (torcida, multidão), prefira som livre ou sintetize.
+Som realista novo (passos, porta, sirene...) que não existe livre: se o ElevenLabs estiver conectado, gerar lá
+(`creative_generate_in_flow`, `eleven_text_to_sound_v2`, prompt em inglês, "dry recording"). Ele gera clipes curtos
+(0,5–2 s) e ignora "8 seconds": para ambiente longo (torcida, multidão), prefira som livre ou sintetize. Sem
+ElevenLabs: procure no Freesound (filtro CC0) ou no Wikimedia Commons, ou sintetize com FFmpeg.
 
-## Vozes (regra do usuário)
-Um take por personagem com todas as falas + tags (eleven_v4): sussurro detalhado, resmungos, risadas, sustos; resposta
+## Fonte das vozes (perguntar ao usuário; resposta em `voz.json` do projeto)
+- **ElevenLabs** (conector do Claude): você gera. Escolha vozes PT-BR com `creative_list_voices` (IDs de exemplo podem
+  não estar na conta), modelo eleven_v4 com tags (`[whispering, scared]`, `[urgent whisper]`, `[sighs]`...). Custo antes.
+- **Outra IA de voz** (Fish Audio, MiniMax, Google, OpenAI, Azure etc.): se houver conector/MCP dela na sessão, use-o como
+  no ElevenLabs; senão, entregue `vozes/<personagem>.txt` com **todas as falas daquele personagem em ordem**, cada uma
+  com a direção em palavras simples (ex.: "(sussurrando, com medo)"), e as tags no formato da IA se ela aceitar. Peça um
+  arquivo por personagem (mp3/wav) em `public/raw/<episodio>/<personagem>.mp3` e siga o mesmo corte abaixo.
+- **Própria voz**: mesmo `vozes/<personagem>.txt`, com dica de gravação (celular perto da boca, cômodo silencioso,
+  meio segundo de pausa entre as falas). Efeitos (`porta`, `radio`, `sussurro`) disfarçam bem vozes repetidas.
+
+## Vozes (regra do usuário, qualquer fonte)
+Um take por personagem com todas as falas + direção de cada fala: sussurro detalhado, resmungos, risadas, sustos; resposta
 0,1–0,3 s depois da fala anterior. Corte por trechos (`scripts/segmentos.mjs`, limiar −38 dB) começando 0,12 s antes
 (sussurro começa baixo) e confira o texto de cada corte com `scripts/transcreve.py` (o Whisper erra sussurro curto;
 compare com a transcrição do take inteiro).

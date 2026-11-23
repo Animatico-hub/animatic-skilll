@@ -7,7 +7,9 @@ público decidir nos comentários.
 ## Do que você precisa
 - Computador **Windows** ou **Mac**.
 - **Claude Code** (app do Claude, aba Code, ou o Claude Code no terminal).
-- Conta no **ElevenLabs** (vozes) com créditos, conectada ao Claude.
+- Uma **IA de voz** da sua preferência. A skill pergunta qual você vai usar: com o **ElevenLabs** conectado ao Claude, ela
+  gera as vozes sozinha; com **outra IA** (ou a sua própria voz), ela te entrega o texto de cada personagem para você
+  gerar e mandar os arquivos.
 - O instalador confere e instala o resto: Node.js, FFmpeg e Python.
 
 ## Instalação (uma vez só)
@@ -25,7 +27,7 @@ Escreva no Claude Code algo como:
 - "faz a parte 2 da minha série"
 
 A skill faz uma pergunta, sugere 3 histórias e, depois que você escolher, mostra **prévias em imagem** para você aprovar
-antes de gastar créditos. Ela avisa o custo das vozes antes de gerar.
+antes de gastar créditos. Se ela for gerar as vozes por você, avisa o custo antes.
 
 ## Atualizar
 Quando sair uma versão nova, baixe o ZIP de novo e rode o instalador. Os seus projetos de vídeo ficam em outra pasta

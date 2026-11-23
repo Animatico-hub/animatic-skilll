@@ -36,8 +36,8 @@ Layout do **WhatsApp** (modo escuro): nome do remetente colorido EM CIMA da mens
 balão, rabinho no primeiro balão, barra com microfone verde. Pesquisar prints reais quando mudar de app.
 Componente: `src/engine/whatsapp.js` (`createWhatsPhone`, mesma interface de `createPhone`).
 
-## 7. Vozes (ElevenLabs)
-- Um take por personagem com todas as falas (voz consistente), tags de direção em cada fala (eleven_v4).
+## 7. Vozes (ElevenLabs, outra IA ou a própria voz — pergunte; ver `audio.md` › "Fonte das vozes")
+- Um take por personagem com todas as falas (voz consistente), direção em cada fala (no ElevenLabs, tags do eleven_v4).
 - **Sussurro detalhado** sempre que a cena pede ([whispering, scared], [urgent whisper], [crying, whispering urgently]);
   depois da ameaça quase tudo é sussurrado. Efeito `sussurro` no corte.
 - **Conversa natural**: resposta 0,1–0,3 s depois da fala anterior.
