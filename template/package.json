@@ -1,0 +1,25 @@
+{
+  "name": "animatic-pov",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "studio": "remotion studio",
+    "check": "remotion still Demo out/check.png --frame=0 --log=verbose",
+    "still": "remotion still Demo out/still.png",
+    "render:demo": "remotion render Demo out/demo.mp4",
+    "sons": "node scripts/py.mjs scripts/sons.py",
+    "transcreve": "node scripts/py.mjs scripts/transcreve.py",
+    "stills": "node scripts/stills.mjs",
+    "voz": "node scripts/voz.mjs",
+    "master": "node scripts/master.mjs",
+    "qa": "node scripts/qa.mjs"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.240",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "remotion": "4.0.240",
+    "three": "0.170.0"
+  }
+}
