@@ -6,10 +6,11 @@ description: AnimaticSkill — motor próprio em Three.js + Remotion para vídeo
 # AnimaticSkill — vídeos 3D cartoon POV (Three.js + Remotion)
 
 ## Licença e uso comercial
-Esta skill e qualquer versão modificada ou derivada estão sob `LICENCA.md`: quem comprou pode criar vídeos, monetizar,
-**vender os vídeos e fazer vídeos para clientes** — mas **só o Titular pode vender a skill**, original ou editada.
+Esta skill e qualquer versão modificada ou derivada estão sob `LICENCA.md`: qualquer pessoa pode usar, modificar e
+compartilhar de graça, criar vídeos, monetizar, **vender os vídeos e fazer vídeos para clientes** — mas **só o Titular
+pode vender a skill**, original ou editada.
 
-## Modo guiado (quem comprou o método, ou pedido vago)
+## Modo guiado (quem está começando, ou pedido vago)
 Quem usa a skill pode não saber programar nem animar. Se o pedido for vago ("quero criar uma série", "me dá ideias",
 "faz um vídeo de terror", "tema: escola") ou for o primeiro uso, conduza tudo, em linguagem simples, sem jargão:
 1. **Preparar o ambiente sozinho** (sem perguntar, só avisar): Node 18+, FFmpeg, Python com `faster-whisper`, conector do

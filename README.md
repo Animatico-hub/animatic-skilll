@@ -32,5 +32,5 @@ Quando sair uma versão nova, baixe o ZIP de novo e rode o instalador. Os seus p
 e **não são apagados**.
 
 ## Licença
-Uso pessoal: você pode criar, monetizar e **vender os vídeos** que fizer, inclusive para clientes.
-**É proibido vender, compartilhar ou repassar a skill ou os arquivos dela.** Veja `LICENCA.md`.
+Você pode usar, modificar e compartilhar a skill de graça, e criar, monetizar e **vender os vídeos** que fizer,
+inclusive para clientes. **Só é proibido vender a skill** (ou versões dela) ou colocá-la em produto pago. Veja `LICENCA.md`.
